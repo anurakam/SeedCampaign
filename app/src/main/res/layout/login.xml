@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/ic_launcher"
+        android:id="@+id/imageView2"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="USERNAME"
+        android:id="@+id/textView6"
+        android:layout_marginTop="34dp"
+        android:layout_below="@+id/imageView2"
+        android:layout_alignStart="@+id/loginbtn" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="PASSWORD"
+        android:id="@+id/textView7"
+        android:layout_below="@+id/textView6"
+        android:layout_alignStart="@+id/textView6"
+        android:layout_marginTop="22dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text=""
+        android:ems="10"
+        android:id="@+id/editText3"
+        android:layout_alignBottom="@+id/textView6"
+        android:layout_alignEnd="@+id/loginbtn"
+        android:layout_toEndOf="@+id/textView7" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:id="@+id/editText4"
+        android:layout_alignBottom="@+id/textView7"
+        android:layout_alignStart="@+id/editText3"
+        android:layout_alignEnd="@+id/editText3" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/login"
+        android:background="@null"
+        android:id="@+id/loginbtn"
+        android:layout_below="@+id/editText4"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="38dp" />
+</RelativeLayout>

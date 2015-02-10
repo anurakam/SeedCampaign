@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false">
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/psu/seedcampaign/Central_Knowlede.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/psu/seedcampaign/East_Knowlede.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/psu/seedcampaign/NorthEast_Knowlede.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/psu/seedcampaign/South_Knowlede.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable-hdpi/circle_shape_drawable.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ic_drawer.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ic_home.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ic_people.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ic_photos.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable-hdpi/total.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/circle_shape_drawable.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/feed.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/plan.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/world.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_central__knowlede.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_east__knowlede.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_north_east__knowlede.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_south__knowlede.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/menu/central__knowlede.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/menu/east__knowlede.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/menu/north__knowlede.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/menu/north_east__knowlede.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/menu/south__knowlede.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml" charset="UTF-8" />
+  </component>
+</project>
+
