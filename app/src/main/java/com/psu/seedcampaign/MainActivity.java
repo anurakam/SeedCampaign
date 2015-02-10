@@ -49,7 +49,7 @@ public class MainActivity extends TabActivity implements TabHost.OnTabChangeList
     private ArrayList<NavDrawerItem> navDrawerItems;
     private NavDrawerListAdapter adapter;
 
-    //---------------------------------------------------
+    //-------------------------------------------------------
 
         @Override
         public void onCreate(Bundle savedInstanceState) {
