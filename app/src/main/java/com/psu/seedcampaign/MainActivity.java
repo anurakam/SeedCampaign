@@ -32,7 +32,7 @@ public class MainActivity extends TabActivity implements TabHost.OnTabChangeList
 
     //-------------------------------------------
 
-    private DrawerLayout mDrawerLayout;
+   /* private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
     private ActionBarDrawerToggle mDrawerToggle;
 
@@ -47,7 +47,7 @@ public class MainActivity extends TabActivity implements TabHost.OnTabChangeList
     private TypedArray navMenuIcons;
 
     private ArrayList<NavDrawerItem> navDrawerItems;
-    private NavDrawerListAdapter adapter;
+    private NavDrawerListAdapter adapter; */
 
     //-------------------------------------------------------
 
@@ -91,6 +91,18 @@ public class MainActivity extends TabActivity implements TabHost.OnTabChangeList
                     .setContent(intent);
             tabHost.addTab(spec);
 
+            intent = new Intent().setClass(this, Plant.class);
+            spec = tabHost.newTabSpec("Four").setIndicator(getResources().getString(R.string.ic_launcher),
+                    getResources().getDrawable(R.drawable.plan))
+                    .setContent(intent);
+            tabHost.addTab(spec);
+
+            intent = new Intent().setClass(this, Feed.class);
+            spec = tabHost.newTabSpec("Five").setIndicator(getResources().getString(R.string.ic_launcher),
+                    getResources().getDrawable(R.drawable.feed))
+                    .setContent(intent);
+            tabHost.addTab(spec);
+
 
             tabHost.getTabWidget().getChildAt(1);
             tabHost.getTabWidget().getChildAt(2);
@@ -117,7 +129,7 @@ public class MainActivity extends TabActivity implements TabHost.OnTabChangeList
 
 
 
-            mTitle = mDrawerTitle = getTitle();
+/*            mTitle = mDrawerTitle = getTitle();
 
             // load slide menu items
             navMenuTitles = getResources().getStringArray(R.array.nav_drawer_items);
@@ -134,7 +146,7 @@ public class MainActivity extends TabActivity implements TabHost.OnTabChangeList
             // adding nav drawer items to array
             // Home
             navDrawerItems.add(new NavDrawerItem(navMenuTitles[0], navMenuIcons.getResourceId(0, -1)));
-/*        // Find People
+        // Find People
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[1], navMenuIcons.getResourceId(1, -1)));
         // Photos
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[2], navMenuIcons.getResourceId(2, -1)));
@@ -143,7 +155,7 @@ public class MainActivity extends TabActivity implements TabHost.OnTabChangeList
         // Pages
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[4], navMenuIcons.getResourceId(4, -1)));
         // What's hot, We  will add a counter here
-        navDrawerItems.add(new NavDrawerItem(navMenuTitles[5], navMenuIcons.getResourceId(5, -1), true, "50+"));*/
+        navDrawerItems.add(new NavDrawerItem(navMenuTitles[5], navMenuIcons.getResourceId(5, -1), true, "50+"));
 
 
             // Recycle the typed array
@@ -182,7 +194,7 @@ public class MainActivity extends TabActivity implements TabHost.OnTabChangeList
             if (savedInstanceState == null) {
                 // on first time display view for first nav item
                 displayView(0);
-            }
+            }*/
 
 
 
@@ -239,13 +251,13 @@ public class MainActivity extends TabActivity implements TabHost.OnTabChangeList
             return super.onOptionsItemSelected(item);
         }*/
 
-
-
-
     /**
      * Slide menu item click listener
      * */
-    private class SlideMenuClickListener implements
+
+
+    /*
+     private class SlideMenuClickListener implements
             ListView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position,
@@ -275,10 +287,16 @@ public class MainActivity extends TabActivity implements TabHost.OnTabChangeList
                 return super.onOptionsItemSelected(item);
         }
     }
+*/
+
+
+
 
     /***
      * Called when invalidateOptionsMenu() is triggered
      */
+
+    /*
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         // if nav drawer is opened, hide the action items
@@ -286,15 +304,15 @@ public class MainActivity extends TabActivity implements TabHost.OnTabChangeList
         menu.findItem(R.id.action_settings).setVisible(!drawerOpen);
         return super.onPrepareOptionsMenu(menu);
     }
-
+*/
     /**
      * Diplaying fragment view for selected nav drawer list item
      * */
-    private void displayView(int position) {
+   /* private void displayView(int position) {
         // update the main content by replacing fragments
         Fragment fragment = null;
         switch (position) {
-/*             case 0:
+           case 0:
                 fragment = new MainActivity();
                 break;
            case 1:
@@ -311,7 +329,7 @@ public class MainActivity extends TabActivity implements TabHost.OnTabChangeList
                 break;
             case 5:
                 fragment = new WhatsHotFragment();
-                break;*/
+                break;
 
             default:
                 break;
@@ -338,13 +356,13 @@ public class MainActivity extends TabActivity implements TabHost.OnTabChangeList
         mTitle = title;
         getActionBar().setTitle(mTitle);
     }
-
+*/
     /**
      * When using the ActionBarDrawerToggle, you must call it during
      * onPostCreate() and onConfigurationChanged()...
      */
 
-    @Override
+  /*  @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
         // Sync the toggle state after onRestoreInstanceState has occurred.
@@ -356,7 +374,7 @@ public class MainActivity extends TabActivity implements TabHost.OnTabChangeList
         super.onConfigurationChanged(newConfig);
         // Pass any configuration change to the drawer toggls
         mDrawerToggle.onConfigurationChanged(newConfig);
-    }
+    }*/
 
 
  }
