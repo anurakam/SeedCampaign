@@ -11,8 +11,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.psu.seedcampaign.R;
-
 public class CustomList extends ArrayAdapter<String>{
     private final Activity context;
     private final String[] web;

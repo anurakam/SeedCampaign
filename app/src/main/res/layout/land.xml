@@ -200,6 +200,9 @@ tools:context="com.psu.seedcampaign.Land" >
         android:id="@+id/textView5"
             android:layout_above="@+id/SouthImgBtn"
             android:layout_toEndOf="@+id/SouthImgBtn" />
+
+
+
     </RelativeLayout>
 
     //android:src="@drawable/abc_ab_bottom_solid_dark_holo"

@@ -6,4 +6,7 @@
     <style name="MyActionBarTheme" parent="@android:style/Widget.Holo.Light.ActionBar">
         <item name="android:background">#BCE954</item>
     </style>
+    <style name="NoActionBar" parent="Theme.AppCompat.Light">
+        <item name="android:windowNoTitle">true</item>
+    </style>
 </resources>

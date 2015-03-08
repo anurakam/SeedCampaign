@@ -8,8 +8,6 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.psu.seedcampaign.R;
-
 public class CustomGrid extends BaseAdapter{
     private Context mContext;
     private final String[] web;

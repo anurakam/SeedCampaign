@@ -5,8 +5,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.psu.seedcampaign.R;
-
 
 public class Discription extends Activity {
 

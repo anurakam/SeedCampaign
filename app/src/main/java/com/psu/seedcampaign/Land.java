@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 
 /**
@@ -11,6 +12,7 @@ import android.widget.ImageButton;
  */
 public class Land extends Activity implements View.OnClickListener {
     private ImageButton North, NorthEast, Central, East, South;
+
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.land);
@@ -19,7 +21,6 @@ public class Land extends Activity implements View.OnClickListener {
         Central = (ImageButton) findViewById(R.id.CentralImgBtn);
         East = (ImageButton) findViewById(R.id.EastImgBtn);
         South = (ImageButton) findViewById(R.id.SouthImgBtn);
-
         North.setOnClickListener(this);
         NorthEast.setOnClickListener(this);
         Central.setOnClickListener(this);

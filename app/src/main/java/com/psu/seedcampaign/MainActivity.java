@@ -1,28 +1,10 @@
 package com.psu.seedcampaign;
 
-import android.app.Fragment;
-import android.app.FragmentManager;
 import android.app.TabActivity;
 import android.content.Intent;
-import android.content.res.Configuration;
-import android.content.res.TypedArray;
 import android.graphics.Color;
-import android.support.v4.app.ActionBarDrawerToggle;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ListView;
 import android.widget.TabHost;
-
-import com.psu.seedcampaign.adapter.NavDrawerListAdapter;
-import com.psu.seedcampaign.model.NavDrawerItem;
-
-import java.util.ArrayList;
 
 
 public class MainActivity extends TabActivity implements TabHost.OnTabChangeListener {

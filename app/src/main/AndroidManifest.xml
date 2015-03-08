@@ -2,13 +2,16 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.psu.seedcampaign" >
 
+    <uses-permission
+        android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/MyCustomTheme" >
         <activity
-            android:name=".Login"
+            android:name="com.psu.seedcampaign.Login"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -17,45 +20,54 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Land"
+            android:name="com.psu.seedcampaign.Land"
             android:label="@string/app_name" >
         </activity>
         <activity
-            android:name=".Plant"
+            android:name="com.psu.seedcampaign.Plant"
             android:label="@string/app_name" >
         </activity>
         <activity
-            android:name=".Feed"
+            android:name="com.psu.seedcampaign.Feed"
             android:label="@string/app_name" >
         </activity>
         <activity
-            android:name=".North_Knowlede"
+            android:name="com.psu.seedcampaign.North_Knowlede"
             android:label="@string/app_name" >
         </activity>
         <activity
-            android:name=".NorthEast_Knowlede"
+            android:name="com.psu.seedcampaign.NorthEast_Knowlede"
             android:label="@string/title_activity_north_east__knowlede" >
         </activity>
         <activity
-            android:name=".Central_Knowlede"
+            android:name="com.psu.seedcampaign.Central_Knowlede"
             android:label="@string/title_activity_central__knowlede" >
         </activity>
         <activity
-            android:name=".East_Knowlede"
+            android:name="com.psu.seedcampaign.East_Knowlede"
             android:label="@string/title_activity_east__knowlede" >
         </activity>
         <activity
-            android:name=".South_Knowlede"
+            android:name="com.psu.seedcampaign.South_Knowlede"
             android:label="@string/title_activity_south__knowlede" >
         </activity>
         <activity
-            android:name=".Discription"
+            android:name="com.psu.seedcampaign.Discription"
             android:label="@string/title_activity_discription" >
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name="com.psu.seedcampaign.MainActivity"
             android:label="@string/app_name" >
         </activity>
+        <activity
+            android:name="com.psu.seedcampaign.CreateUser"
+            android:label="@string/app_name" >
+        </activity>
+        <meta-data
+        android:name="com.facebook.sdk.ApplicationId"
+        android:value="@string/app_id" />
+
+        <activity android:name="com.facebook.LoginActivity" />
     </application>
 
 </manifest>
