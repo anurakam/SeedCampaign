@@ -68,6 +68,49 @@ public class JSONParser {
 		return userDetail;
 			
 	}
+
+    public PlantingTable parseUserPlanting(JSONObject object)
+    {
+        PlantingTable userPlanting=new PlantingTable();
+
+        try {
+            JSONObject jsonObj=object.getJSONArray("Value").getJSONObject(0);
+
+            userPlanting.setPicName(jsonObj.getString("picName"));
+            userPlanting.setNickName(jsonObj.getString("nickName"));
+            userPlanting.setFlowerName(jsonObj.getString("flowerName"));
+            userPlanting.setLocationName(jsonObj.getString("locationName"));
+            userPlanting.setRegion(jsonObj.getString("region"));
+
+
+        } catch (JSONException e) {
+            // TODO Auto-generated catch block
+            Log.d("JSONParser => parseUserPlanting", e.getMessage());
+        }
+
+        return userPlanting;
+
+    }
+
+    public ArrayList<PlantingDetailsTable> parseUserPlanting2(JSONObject object)
+    {
+        ArrayList<PlantingDetailsTable> arrayList=new ArrayList<PlantingDetailsTable>();
+        try {
+            JSONArray jsonArray=object.getJSONArray("Value");
+            JSONObject jsonObj=null;
+            for(int i=0;i<jsonArray.length();i++)
+            {
+                jsonObj=jsonArray.getJSONObject(i);
+                arrayList.add(new PlantingDetailsTable(jsonObj.getString("picName"), jsonObj.getString("nickName"), jsonObj.getString("flowerName"), jsonObj.getString("locationName"), jsonObj.getString("region")));
+            }
+
+
+        } catch (JSONException e) {
+            // TODO Auto-generated catch block
+            Log.d("JSONParser => parseUserPlanting2", e.getMessage());
+        }
+        return arrayList;
+    }
 	
 	
 }

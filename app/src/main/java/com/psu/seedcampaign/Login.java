@@ -46,8 +46,8 @@ import java.security.NoSuchAlgorithmException;
  * Created by อนุรักษ์ on 3/2/2558.
  */
 public class Login extends FragmentActivity {
-    private ImageButton Login;
-    private Button Register;
+    private ImageButton Login,Register;
+
     private static String TAG = Login.class.getSimpleName();
     EditText userLogin, passLogin;
     Context context;
@@ -85,7 +85,7 @@ public class Login extends FragmentActivity {
             }
 
         });
-        Register = (Button) findViewById(R.id.regisbtn);
+        Register = (ImageButton) findViewById(R.id.regisbtn);
         Register.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -186,7 +186,7 @@ public class Login extends FragmentActivity {
 
             super.onPreExecute();
 
-            Toast.makeText(context, "Please Wait...",Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "กรุณารอสักครู่...",Toast.LENGTH_SHORT).show();
         }
 
         @Override
@@ -203,7 +203,7 @@ public class Login extends FragmentActivity {
             }
             else
             {
-                Toast.makeText(context, "Not valid username/password ",Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "ชื่อผู้ใช้/รหัสผ่านของท่านไม่ถูกต้อง ",Toast.LENGTH_SHORT).show();
             }
 
         }

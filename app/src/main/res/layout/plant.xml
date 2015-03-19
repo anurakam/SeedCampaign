@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -79,4 +80,126 @@
         android:layout_alignEnd="@+id/imageButton" />
 
 
-</RelativeLayout>
+</RelativeLayout>-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LinearLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:weightSum="1">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="167dp"
+        android:gravity="left"
+        android:padding="1dp"
+        android:weightSum="1"
+        android:layout_weight="0.41">
+
+        <ImageButton
+            android:id="@+id/imageButtonTakePhoto"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:background="@null"
+            android:src="@drawable/takephoto"
+            />
+
+
+
+        <EditText
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/nameTree"
+            android:hint="@string/name_tree"
+            android:singleLine="true"
+            android:inputType="textCapWords"
+            android:layout_marginTop="26dp"
+            android:layout_alignTop="@+id/imageButtonTakePhoto"
+            android:layout_alignParentEnd="true" />
+
+        <EditText
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/commonName"
+            android:hint="@string/common_name"
+            android:singleLine="true"
+            android:inputType="textCapWords"
+            android:layout_below="@+id/nameTree"
+            android:layout_alignParentEnd="true" />
+
+        <EditText
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/amount"
+            android:hint="@string/number_of_trees"
+            android:singleLine="true"
+            android:inputType="numberDecimal"
+            android:layout_below="@+id/commonName"
+            android:layout_alignParentEnd="true"
+            />
+
+        <ImageButton
+            android:id="@+id/imageButtonPlaces"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@null"
+            android:src="@drawable/facebook_places"
+            android:layout_alignParentBottom="true"
+            android:layout_alignStart="@+id/imageButtonTakePhoto" />
+
+        <EditText
+            android:id="@+id/locationName"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/location"
+            android:layout_alignEnd="@+id/imageButtonTakePhoto"
+            android:layout_toEndOf="@+id/imageButtonPlaces"
+            android:layout_alignBottom="@+id/imageButtonPlaces"
+            android:layout_alignTop="@+id/region" />
+
+        <EditText
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/region"
+            android:hint="ภาค"
+            android:singleLine="true"
+            android:inputType="textCapWords"
+            android:layout_alignBottom="@+id/imageButtonPlaces"
+            android:layout_alignStart="@+id/amount" />
+
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="256dp"
+        android:orientation="vertical"
+        android:padding="10dp"
+        android:gravity="bottom"
+        android:layout_weight="0.39"
+        android:weightSum="1">
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="20dp"
+            android:layout_marginBottom="35dp"
+            android:visibility="gone"/>
+        <ImageButton
+            android:id="@+id/imageButtonPlan"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:src="@drawable/planbtn"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true" />
+
+
+
+    </RelativeLayout>
+
+</LinearLayout>

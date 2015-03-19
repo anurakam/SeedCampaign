@@ -2,6 +2,8 @@ package com.psu.seedcampaign;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -82,13 +84,27 @@ public class CreateUser extends Activity {
 
         @Override
         protected void onPostExecute(Void result) {
+            showAlert();
 
-            Intent i = new Intent(CreateUser.this, Login.class);
-            startActivity(i);
         }
 
     }
 
+    private void showAlert() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("เสร็จสิ้น")
+                .setMessage("คุณได้ทำการสมัครสมาชิกเรียบร้อยแล้ว")
+                .setCancelable(false)
+                .setPositiveButton("ตกลง", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // do nothing
+                        Intent i = new Intent(CreateUser.this, Login.class);
+                        startActivity(i);
+                    }
+                });
+        AlertDialog alert = builder.create();
+        alert.show();
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

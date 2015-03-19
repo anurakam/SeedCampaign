@@ -158,6 +158,71 @@ public class RestAPI {
         result = new JSONObject(r);
         return result;
     }
+    public JSONObject GetTreeKnowledge() throws Exception {
+        JSONObject result = null;
+        JSONObject o = new JSONObject();
+        JSONObject p = new JSONObject();
+        o.put("interface","RestAPI");
+        o.put("method", "GetTreeKnowledge");
+        o.put("parameters", p);
+        String s = o.toString();
+        String r = load(s);
+        result = new JSONObject(r);
+        return result;
+    }
+
+    public JSONObject Planting(String userName, String picName, String nickName, String flowerName, String amount, String locationName, String region) throws Exception {
+        JSONObject result = null;
+        JSONObject o = new JSONObject();
+        JSONObject p = new JSONObject();
+        o.put("interface","RestAPI");
+        o.put("method", "Planting");
+        p.put("userName",mapObject(userName));
+        p.put("picName",mapObject(picName));
+        p.put("nickName",mapObject(nickName));
+        p.put("flowerName",mapObject(flowerName));
+        p.put("amount",mapObject(amount));
+        p.put("locationName",mapObject(locationName));
+        p.put("region",mapObject(region));
+        o.put("parameters", p);
+        String s = o.toString();
+        String r = load(s);
+        result = new JSONObject(r);
+        return result;
+    }
+
+    public JSONObject GetPlantingDetails() throws Exception {
+        JSONObject result = null;
+        JSONObject o = new JSONObject();
+        JSONObject p = new JSONObject();
+        o.put("interface","RestAPI");
+        o.put("method", "GetPlantingDetails");
+       // p.put("userName",mapObject(userName));
+        o.put("parameters", p);
+        String s = o.toString();
+        String r = load(s);
+        result = new JSONObject(r);
+        return result;
+    }
+
+    public JSONObject Planting2(String picName, String nickName, String flowerName, String locationName, String region) throws Exception {
+        JSONObject result = null;
+        JSONObject o = new JSONObject();
+        JSONObject p = new JSONObject();
+        o.put("interface","RestAPI");
+        o.put("method", "Planting2");
+
+        p.put("picName",mapObject(picName));
+        p.put("nickName",mapObject(nickName));
+        p.put("flowerName",mapObject(flowerName));
+        p.put("locationName",mapObject(locationName));
+        p.put("region",mapObject(region));
+        o.put("parameters", p);
+        String s = o.toString();
+        String r = load(s);
+        result = new JSONObject(r);
+        return result;
+    }
 
 }
 

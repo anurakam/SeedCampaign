@@ -1,9 +1,16 @@
 package com.psu.seedcampaign;
 
+import android.app.AlertDialog;
+import android.app.LocalActivityManager;
 import android.app.TabActivity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.TabHost;
 
 
@@ -32,12 +39,16 @@ public class MainActivity extends TabActivity implements TabHost.OnTabChangeList
     private NavDrawerListAdapter adapter; */
 
     //-------------------------------------------------------
+    String filePath = null;
+    String value = null;
+    String location = null;
 
         @Override
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
 
             setContentView(R.layout.activity_main);
+
 
 
             /*if (android.os.Build.VERSION.SDK_INT > 9) {
@@ -53,16 +64,32 @@ public class MainActivity extends TabActivity implements TabHost.OnTabChangeList
             TabHost.TabSpec spec;
             Intent intent;
 
-            intent = new Intent().setClass(this, Land.class);
+            intent = new Intent().setClass(this, Plant.class);
+            filePath = getIntent().getStringExtra("filePath");
+            if (filePath != null) {
+                // boolean isImage = getIntent().getBooleanExtra("isImage", true);
+                intent.putExtra("filePath", filePath);
+                // intent.putExtra("isImage", isImage);
+                //this.startActivity(intent);
+
+            }
+            value= getIntent().getStringExtra("username");
+            if (value != null) {
+                intent.putExtra("username", value);}
+             location = getIntent().getStringExtra("location");
+            if (location != null) {
+                intent.putExtra("location", location);}
             spec = tabHost.newTabSpec("One").setIndicator(getResources().getString(R.string.ic_launcher),
-                    getResources().getDrawable(R.drawable.world))
+                    getResources().getDrawable(R.drawable.plan))
                     .setContent(intent);
             tabHost.addTab(spec);
 
 
-            intent = new Intent().setClass(this, Plant.class);
+            intent = new Intent().setClass(this, Land.class);
+
+
             spec = tabHost.newTabSpec("Two").setIndicator(getResources().getString(R.string.ic_launcher),
-                    getResources().getDrawable(R.drawable.plan))
+                    getResources().getDrawable(R.drawable.world))
                     .setContent(intent);
             tabHost.addTab(spec);
 
@@ -73,15 +100,18 @@ public class MainActivity extends TabActivity implements TabHost.OnTabChangeList
                     .setContent(intent);
             tabHost.addTab(spec);
 
-            intent = new Intent().setClass(this, Plant.class);
+            intent = new Intent().setClass(this, ProfileUser.class);
+
+            if (value != null) {
+            intent.putExtra("username", value);}
             spec = tabHost.newTabSpec("Four").setIndicator(getResources().getString(R.string.ic_launcher),
-                    getResources().getDrawable(R.drawable.plan))
+                    getResources().getDrawable(R.drawable.profile))
                     .setContent(intent);
             tabHost.addTab(spec);
 
-            intent = new Intent().setClass(this, Feed.class);
+            intent = new Intent().setClass(this, Knowledge.class);
             spec = tabHost.newTabSpec("Five").setIndicator(getResources().getString(R.string.ic_launcher),
-                    getResources().getDrawable(R.drawable.feed))
+                    getResources().getDrawable(R.drawable.iconkb))
                     .setContent(intent);
             tabHost.addTab(spec);
 
@@ -357,6 +387,21 @@ public class MainActivity extends TabActivity implements TabHost.OnTabChangeList
         // Pass any configuration change to the drawer toggls
         mDrawerToggle.onConfigurationChanged(newConfig);
     }*/
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        Intent intent = new Intent(this, Plant.class);
+        startActivity(intent);
+        return true;
+
+    }
+
 
 
  }

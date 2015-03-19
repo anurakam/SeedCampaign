@@ -1,6 +1,7 @@
-<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <item
+    <!--<item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
         android:showAsAction="never"
@@ -9,6 +10,12 @@
         android:id="@+id/action_login"
         android:orderInCategory="100"
         android:showAsAction="never"
-        android:title="@string/action_login"/>
+        android:title="@string/action_login"/>-->
+    <item
+        android:id="@+id/action_add"
+        android:orderInCategory="100"
+        android:title="ปลูก"
+        app:showAsAction="always"
+        android:icon="@drawable/plan"/>
 
 </menu>

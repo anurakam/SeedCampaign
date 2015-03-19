@@ -106,13 +106,15 @@
         android:layout_alignRight="@+id/username"
         android:ems="10" />
 
-    <Button
+    <ImageButton
         android:id="@+id/btn_createuser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="43dp"
+        android:layout_marginTop="37dp"
         android:text="@string/create_user_account"
+        android:background="@null"
+        android:src="@drawable/register"
         android:layout_below="@+id/password"
-        android:layout_alignStart="@+id/password" />
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

@@ -6,17 +6,30 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Toast;
+
+import com.google.gson.GsonBuilder;
+
+import java.util.List;
+
+import retrofit.Callback;
+import retrofit.RestAdapter;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
+import retrofit.converter.GsonConverter;
 
 /**
  * Created by อนุรักษ์ on 2/2/2558.
  */
-public class Land extends Activity implements View.OnClickListener {
+public class Land extends Activity {
     private ImageButton North, NorthEast, Central, East, South;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.land);
-        North = (ImageButton) findViewById(R.id.NorthImgBtn);
+
+
+        /*North = (ImageButton) findViewById(R.id.NorthImgBtn);
         NorthEast = (ImageButton) findViewById(R.id.NorthEastImgBtn);
         Central = (ImageButton) findViewById(R.id.CentralImgBtn);
         East = (ImageButton) findViewById(R.id.EastImgBtn);
@@ -25,11 +38,11 @@ public class Land extends Activity implements View.OnClickListener {
         NorthEast.setOnClickListener(this);
         Central.setOnClickListener(this);
         East.setOnClickListener(this);
-        South.setOnClickListener(this);
+        South.setOnClickListener(this);*/
 
 
     }
-    public void onClick(View v) {
+    /*public void onClick(View v) {
         switch (v.getId()) {
 
             case R.id.NorthImgBtn:
@@ -58,6 +71,6 @@ public class Land extends Activity implements View.OnClickListener {
                 break;
 
         }
-    }
+}*/
 }
 

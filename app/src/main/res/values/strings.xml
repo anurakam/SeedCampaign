@@ -21,11 +21,15 @@
     <string name="login">Login</string>
     <string name="username">ชื่อบัญชีผู้ใช้:</string>
     <string name="password">รหัสผ่าน :</string>
-    <string name="user_details">User Details</string>
+    <string name="user_details">ข้อมูลผู้ใช้งาน</string>
     <string name="firstname">ชื่อ:</string>
     <string name="lastname">นามสกุล:</string>
     <string name="title_activity_create_user">สมัครสมาชิก</string>
     <string name="create_user_account">สมัครสมาชิก</string>
+    <string name="name_tree">ชื่อต้นไม้ของคุณ</string>
+    <string name="common_name">ชื่อสามัญ</string>
+    <string name="number_of_trees">จำนวนต้นไม้</string>
+    <string name="location">ระบุสถานที่</string>
     <!-- Nav Drawer Menu Items -->
     <string-array name="nav_drawer_items">
         <item >หน้าหลัก</item>
