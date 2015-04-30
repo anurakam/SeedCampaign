@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 
 /**
  * Created by อนุรักษ์ on 8/3/2558.
@@ -22,7 +23,7 @@ import android.widget.EditText;
 public class CreateUser extends Activity {
 
     EditText FirstName, LastName, Username, Password;
-    Button btnCreateUser;
+    ImageButton btnCreateUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +36,7 @@ public class CreateUser extends Activity {
         LastName = (EditText) findViewById(R.id.lastname);
         Username = (EditText) findViewById(R.id.username);
         Password = (EditText) findViewById(R.id.password);
-        btnCreateUser=(Button) findViewById(R.id.btn_createuser);
+        btnCreateUser=(ImageButton) findViewById(R.id.btn_createuser);
 
         btnCreateUser.setOnClickListener(new View.OnClickListener() {
 

@@ -76,6 +76,9 @@ public class Login extends FragmentActivity {
                 String username=userLogin.getText().toString();
                 String password=passLogin.getText().toString();
 
+
+
+
                 // Execute the AsyncLogin class
                 new AsyncLogin().execute(username,password);
 

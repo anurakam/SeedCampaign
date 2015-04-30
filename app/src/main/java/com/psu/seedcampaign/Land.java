@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.GsonBuilder;
@@ -21,13 +22,14 @@ import retrofit.converter.GsonConverter;
 /**
  * Created by อนุรักษ์ on 2/2/2558.
  */
-public class Land extends Activity {
+ public class Land extends Activity {
     private ImageButton North, NorthEast, Central, East, South;
-
+    private TextView SumPeople;
+    String Count;
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.land);
-
+        SumPeople = (TextView) findViewById(R.id.peopleSum);
 
         /*North = (ImageButton) findViewById(R.id.NorthImgBtn);
         NorthEast = (ImageButton) findViewById(R.id.NorthEastImgBtn);
@@ -40,8 +42,36 @@ public class Land extends Activity {
         East.setOnClickListener(this);
         South.setOnClickListener(this);*/
 
+        GsonBuilder builder = new GsonBuilder();
+        RestAdapter restAdapter = new RestAdapter.Builder()
+                .setLogLevel(RestAdapter.LogLevel.FULL)
+                .setEndpoint("http://anurakam.somee.com/")
+                .setConverter(new GsonConverter(builder.create()))
+                .build();
+        ApiService retrofit = restAdapter.create(ApiService.class);
+        retrofit.getCountPeopleByMethodWithCallback(new Callback<CountPeopleModel>() {
+
+
+            @Override
+            public void success(CountPeopleModel countPeopleModel, Response response) {
+                CountPeopleModel CountPeople = countPeopleModel;
+                Count = CountPeople.getCountPeople();
+                SumPeople.setText("ผู้เข้าร่วมโครงการ : " + Count + " คน");
+
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+                Toast.makeText(Land.this, "ไม่สามารถเข้าถึงข้อมูลได้", Toast.LENGTH_SHORT).show();
+            }
+        });
+
 
     }
+
+  }
+
+
     /*public void onClick(View v) {
         switch (v.getId()) {
 
@@ -72,5 +102,3 @@ public class Land extends Activity {
 
         }
 }*/
-}
-

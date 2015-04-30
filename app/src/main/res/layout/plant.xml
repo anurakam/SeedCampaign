@@ -88,7 +88,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="10dp"
-    android:weightSum="1">
+    android:weightSum="1"
+    android:background="@color/background_feed">
 
     <RelativeLayout
         android:layout_width="match_parent"

@@ -47,30 +47,7 @@ public class Knowledge extends Activity {
             }
         });
 
-        GsonBuilder builder = new GsonBuilder();
-        RestAdapter restAdapter = new RestAdapter.Builder()
-                .setLogLevel(RestAdapter.LogLevel.FULL)
-                .setEndpoint("http://anurakam.somee.com")
-                .setConverter(new GsonConverter(builder.create()))
-                .build();
-        ApiService retrofit = restAdapter.create(ApiService.class);
-        retrofit.getKnowledgeByMethodWithCallback(new Callback<List<KnowledgeModel>>() {
 
-
-
-            @Override
-            public void success(List<KnowledgeModel> knowledgeModels, Response response) {
-                List<KnowledgeModel> kl = knowledgeModels;
-                gridView.setAdapter(new KnowledgeListAdapter(kl));
-            }
-
-            @Override
-            public void failure(RetrofitError error) {
-                Toast.makeText(Knowledge.this,
-                        "Connect Failure Please Try Again",
-                        Toast.LENGTH_LONG).show();
-            }
-        });
     }
     public static String getLocalName() {
         return local_Name;

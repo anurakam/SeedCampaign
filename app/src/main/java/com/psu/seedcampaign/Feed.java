@@ -176,7 +176,7 @@ public class Feed extends Activity {
             holder.nickName.setText("ชื่อต้นไม้: " + bk.getNickName());
             holder.flowerName.setText("ชื่อสามัญ: " + bk.getFlowerName());
             holder.amount.setText("ปลูกไปแล้ว: " + bk.getAmount()+"ต้น");
-            Picasso.with(Feed.this).load("http://anurakam.somee.com/AndroidFileUpload/uploads/" + bk.getPicName()).into(holder.image);
+            Picasso.with(Feed.this).load("http://anurakam.somee.com/AndroidFileUpload/uploads/" + bk.getPicName()).resize(600, 600).into(holder.image);
 
             return convertView;
         }

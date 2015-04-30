@@ -21,5 +21,8 @@ public interface ApiService {
     void getKnowledgeDetailByNameWithCallback(@Query("localName") String local_name,Callback<KnowledgeDetailModel> callback);
 
     @GET("/countpeople.php")
-    void getCountPeopleByMethodWithCallback(Callback<List<CountPeopleModel>> callback);
+    void getCountPeopleByMethodWithCallback(Callback<CountPeopleModel> callback);
+
+    @GET("/histoty_user.php")
+    void getHistoryByUserNameWithCallback(@Query("userName") String user_name,Callback<List<HistoryModel>> callback);
 }
