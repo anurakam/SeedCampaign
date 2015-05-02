@@ -1,17 +1,12 @@
 package com.psu.seedcampaign;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.GsonBuilder;
-
-import java.util.List;
 
 import retrofit.Callback;
 import retrofit.RestAdapter;
@@ -24,13 +19,18 @@ import retrofit.converter.GsonConverter;
  */
  public class Land extends Activity {
     private ImageButton North, NorthEast, Central, East, South;
-    private TextView SumPeople;
-    String Count;
+    private TextView SumPeople,NorthSum,NorthEastSum,EastSum,CentralSum,SouthSum,AllTreeSum;
+    String Count,SumN,SumNE,SumE,SumC,SumS,SumA;
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.land);
         SumPeople = (TextView) findViewById(R.id.peopleSum);
-
+        NorthSum = (TextView) findViewById(R.id.northSum);
+        NorthEastSum  = (TextView) findViewById(R.id.north_eastSum);
+        EastSum  = (TextView) findViewById(R.id.eastSum);
+        CentralSum  = (TextView) findViewById(R.id.centerSum);
+        SouthSum  = (TextView) findViewById(R.id.southSum);
+        AllTreeSum = (TextView) findViewById(R.id.treeSum);
         /*North = (ImageButton) findViewById(R.id.NorthImgBtn);
         NorthEast = (ImageButton) findViewById(R.id.NorthEastImgBtn);
         Central = (ImageButton) findViewById(R.id.CentralImgBtn);
@@ -65,8 +65,88 @@ import retrofit.converter.GsonConverter;
                 Toast.makeText(Land.this, "ไม่สามารถเข้าถึงข้อมูลได้", Toast.LENGTH_SHORT).show();
             }
         });
+        //ApiService retrofit2 = restAdapter.create(ApiService.class);
+        retrofit.getSumNorthByMethodWithCallback(new Callback<SumNorthModel>() {
+            @Override
+            public void success(SumNorthModel sumNorthModel, Response response) {
+                SumNorthModel SumNorth = sumNorthModel;
+                SumN = SumNorth.getSumNorth();
 
+                NorthSum.setText(SumN + " ต้น");
+            }
 
+            @Override
+            public void failure(RetrofitError error) {
+                Toast.makeText(Land.this, "ไม่สามารถเข้าถึงข้อมูลจำนวนต้นไมภาคเหนือได้", Toast.LENGTH_SHORT).show();
+            }
+        }) ;
+        retrofit.getSumNorthEastByMethodWithCallback(new Callback<SumNorthEastModel>() {
+            @Override
+            public void success(SumNorthEastModel sumNorthEastModel, Response response) {
+                SumNorthEastModel SumNorthEast = sumNorthEastModel;
+                SumNE = SumNorthEast.getSumNorthEast();
+                NorthEastSum.setText(SumNE + " ต้น");
+
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+                Toast.makeText(Land.this, "ไม่สามารถเข้าถึงข้อมูลจำนวนต้นไมภาคตะวันออกเฉียงเหนือได้", Toast.LENGTH_SHORT).show();
+            }
+        });
+        retrofit.getSumCentralByMethodWithCallback(new Callback<SumCentralModel>() {
+            @Override
+            public void success(SumCentralModel sumCentralModel, Response response) {
+                SumCentralModel SumCentral = sumCentralModel;
+                SumC = SumCentral.getSumCentral();
+                CentralSum.setText(SumC + " ต้น");
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+                Toast.makeText(Land.this, "ไม่สามารถเข้าถึงข้อมูลจำนวนต้นไมภาคกลางได้", Toast.LENGTH_SHORT).show();
+            }
+        });
+        retrofit.getSumEastByMethodWithCallback(new Callback<SumEastModel>() {
+            @Override
+            public void success(SumEastModel sumEastModel, Response response) {
+                SumEastModel SumEast = sumEastModel;
+                SumE = SumEast.getSumEast();
+                EastSum.setText(SumE + " ต้น");
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+                Toast.makeText(Land.this, "ไม่สามารถเข้าถึงข้อมูลจำนวนต้นไมภาคตะวันออกได้", Toast.LENGTH_SHORT).show();
+            }
+        });
+        retrofit.getSumSouthByMethodWithCallback(new Callback<SumSouthModel>() {
+            @Override
+            public void success(SumSouthModel sumSouthModel, Response response) {
+                SumSouthModel SumSouth = sumSouthModel;
+                SumS = SumSouth.getSumSouth();
+                SouthSum.setText(SumS + " ต้น");
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+                Toast.makeText(Land.this, "ไม่สามารถเข้าถึงข้อมูลจำนวนต้นไมภาคใต้ได้", Toast.LENGTH_SHORT).show();
+            }
+        });
+        retrofit.getSumAllTreeByMethodWithCallback(new Callback<SumAllTreeModel>() {
+            @Override
+            public void success(SumAllTreeModel sumAllTreeModel, Response response) {
+                SumAllTreeModel SumAll = sumAllTreeModel;
+                SumA = SumAll.getSumAllTre();
+                AllTreeSum.setText("จำนวนต้นไม้ทั้งหมดในโครงการ : "+SumA + " ต้น");
+
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+                Toast.makeText(Land.this, "ไม่สามารถเข้าถึงข้อมูลจำนวนต้นไม้ทั้งหมดได้", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
   }

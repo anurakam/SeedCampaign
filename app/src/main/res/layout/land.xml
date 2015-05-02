@@ -107,12 +107,13 @@ tools:context="com.psu.seedcampaign.Land" >
             android:layout_height="wrap_content"
             android:src="@drawable/total"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="20dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="258"
+            android:text="   "
             android:id="@+id/northSum"
             android:layout_alignParentTop="true"
             android:layout_alignParentStart="true"
@@ -122,7 +123,7 @@ tools:context="com.psu.seedcampaign.Land" >
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="241"
+            android:text="   "
             android:layout_marginLeft="16dp"
             android:id="@+id/north_eastSum"
 
@@ -134,7 +135,7 @@ tools:context="com.psu.seedcampaign.Land" >
         <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="157"
+        android:text="   "
         android:id="@+id/eastSum"
             android:layout_centerVertical="true"
             android:layout_toEndOf="@+id/centerSum"
@@ -143,12 +144,12 @@ tools:context="com.psu.seedcampaign.Land" >
         <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="154"
+        android:text="   "
         android:id="@+id/southSum"
             android:layout_alignParentBottom="true"
             android:layout_alignEnd="@+id/northSum"
             android:layout_marginEnd="20dp"
-            android:layout_marginBottom="63dp" />
+            android:layout_marginBottom="85dp" />
 
         <!--<ImageButton
         android:id="@+id/NorthImgBtn"
@@ -202,7 +203,7 @@ tools:context="com.psu.seedcampaign.Land" >
         <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="141"
+        android:text="   "
         android:id="@+id/centerSum"
             android:layout_below="@+id/north_eastSum"
             android:layout_alignStart="@+id/northSum"
@@ -213,8 +214,16 @@ tools:context="com.psu.seedcampaign.Land" >
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text=""
-            android:id="@+id/peopleSum"
+            android:id="@+id/treeSum"
             android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text=""
+            android:id="@+id/peopleSum"
+            android:layout_above="@+id/treeSum"
             android:layout_alignParentEnd="true" />
 
 

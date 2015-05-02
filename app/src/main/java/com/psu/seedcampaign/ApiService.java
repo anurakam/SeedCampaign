@@ -25,4 +25,17 @@ public interface ApiService {
 
     @GET("/histoty_user.php")
     void getHistoryByUserNameWithCallback(@Query("userName") String user_name,Callback<List<HistoryModel>> callback);
+
+    @GET("/sumnorth.php")
+    void getSumNorthByMethodWithCallback(Callback<SumNorthModel> callback);
+    @GET("/sumnortheast.php")
+    void getSumNorthEastByMethodWithCallback(Callback<SumNorthEastModel> callback);
+    @GET("/sumeast.php")
+    void getSumEastByMethodWithCallback(Callback<SumEastModel> callback);
+    @GET("/sumcenter.php")
+    void getSumCentralByMethodWithCallback(Callback<SumCentralModel> callback);
+    @GET("/sumsouth.php")
+    void getSumSouthByMethodWithCallback(Callback<SumSouthModel> callback);
+    @GET("/sumalltree.php")
+    void getSumAllTreeByMethodWithCallback(Callback<SumAllTreeModel> callback);
 }
