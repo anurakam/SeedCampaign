@@ -1,21 +1,25 @@
 package com.psu.seedcampaign;
 
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.app.NavUtils;
+import android.os.ParcelFileDescriptor;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -24,10 +28,23 @@ import android.widget.Toast;
 import com.google.gson.GsonBuilder;
 import com.squareup.picasso.Picasso;
 
+import org.apache.http.HttpResponse;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONObject;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.FileDescriptor;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import retrofit.Callback;
 import retrofit.RestAdapter;
@@ -45,8 +62,18 @@ public class ProfileUser extends Activity {
     Context context;
     ArrayList<String> data;
 
-    TextView tvFisrtName, tvLastName;
-    String user_name;
+    TextView tvFisrtName, tvLastName, allTree;
+    String user_name,AllTree;
+    ImageButton profileButton;
+
+    private static final int PICK_IMAGE = 1;
+
+    String selectedImagePath;
+    String username,imageprofile;
+    private static final String TAG = "upload";
+
+    String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss",
+            Locale.getDefault()).format(new Date());
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,6 +93,8 @@ public class ProfileUser extends Activity {
         tvFisrtName=(TextView)findViewById(R.id.tv_firstname);
         tvLastName=(TextView)findViewById(R.id.tv_lastname);
 
+        allTree = (TextView)findViewById(R.id.alltree);
+        profileButton = (ImageButton)findViewById(R.id.imageProfile);
         Intent i=getIntent();
         user_name=i.getStringExtra("username");
        // Toast.makeText(context, user_name, Toast.LENGTH_SHORT).show();
@@ -73,7 +102,17 @@ public class ProfileUser extends Activity {
         new AsyncUserDetails().execute(user_name);
        // new AsyncUserPlanting().execute();
 
+        profileButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setType("image/*");
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                startActivityForResult(Intent.createChooser(intent, "Select Picture"),
+                        PICK_IMAGE);
 
+            }
+        });
 
 
 
@@ -101,6 +140,21 @@ public class ProfileUser extends Activity {
             public void failure(RetrofitError error) {
                 Toast.makeText(ProfileUser.this,
                         "ไม่สามารถเข้าถึงข้อมูลได้",
+                        Toast.LENGTH_LONG).show();
+            }
+        });
+        retrofit.getAllTreeUserByUserNameWithCallback(user_name,new Callback<AllTreeUserModel>() {
+            @Override
+            public void success(AllTreeUserModel allTreeUserModel, Response response) {
+                AllTreeUserModel AllTreeUser =allTreeUserModel;
+                AllTree = AllTreeUser.getAllTreeUser();
+                allTree.setText("จำนวนต้นไม้ที่คุณปลูกทั้งหมด : "+ AllTree + " ต้น");
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+                Toast.makeText(ProfileUser.this,
+                        "ไม่สามารถเข้าถึงข้อมูลต้นไม้ทั้งหมดได้",
                         Toast.LENGTH_LONG).show();
             }
         });
@@ -320,4 +374,182 @@ public class ProfileUser extends Activity {
         return super.onOptionsItemSelected(item);
     }
 */
+   @Override
+   protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+       // TODO Auto-generated method stub
+
+
+
+       if (resultCode == RESULT_OK) {
+           if (requestCode == PICK_IMAGE) {
+               Uri selectedImageUri = data.getData();
+               if (Build.VERSION.SDK_INT < 19) {
+                   selectedImagePath = getPath(selectedImageUri);
+                   Bitmap bitmap = BitmapFactory.decodeFile(selectedImagePath);
+                   profileButton.setImageBitmap(Bitmap.createScaledBitmap(bitmap, 200, 200, false));
+                   try {
+                       sendPhoto(bitmap);
+                   } catch (Exception e) {
+//					// TODO Auto-generated catch block
+                       e.printStackTrace();
+                   }
+
+               }
+               else {
+                   ParcelFileDescriptor parcelFileDescriptor;
+                   try {
+                       parcelFileDescriptor = getContentResolver().openFileDescriptor(selectedImageUri, "r");
+                       FileDescriptor fileDescriptor = parcelFileDescriptor.getFileDescriptor();
+                       Bitmap image = BitmapFactory.decodeFileDescriptor(fileDescriptor);
+                       parcelFileDescriptor.close();
+
+                       profileButton.setImageBitmap(Bitmap.createScaledBitmap(image, 200, 200, false));
+
+                       sendPhoto(image);
+
+                   } catch (FileNotFoundException e) {
+                       e.printStackTrace();
+                   } catch (IOException e) {
+                       // TODO Auto-generated catch block
+                       e.printStackTrace();
+                   } catch (Exception e) {
+                       e.printStackTrace();
+                   }
+
+               }
+           }
+       }
+   }
+
+    public String getPath(Uri uri) {
+        if( uri == null ) {
+            return null;
+        }
+        String[] projection = { MediaStore.Images.Media.DATA };
+        Cursor cursor = getContentResolver().query(uri, projection, null, null, null);
+        if( cursor != null ){
+            int column_index = cursor
+                    .getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+            cursor.moveToFirst();
+            return cursor.getString(column_index);
+        }
+        return uri.getPath();
+    }
+    private void sendPhoto(Bitmap bitmap) throws Exception {
+
+
+        username = user_name;
+        imageprofile = "Profile_"+timeStamp+ ".jpg";
+
+        ImageProfileTable imageProfileTable = new ImageProfileTable(username,imageprofile);
+        new AsyncImageProfile().execute(imageProfileTable);
+        new UploadTask().execute(bitmap);
+
+    }
+
+    protected class AsyncImageProfile extends
+            AsyncTask<ImageProfileTable, Void, Void> {
+
+        @Override
+        protected Void doInBackground(ImageProfileTable... params) {
+
+            RestAPI api = new RestAPI();
+            try {
+
+                api.SaveImageProfile(params[0].getUserName(),
+                        params[0].getImageProfile());
+                Toast.makeText(ProfileUser.this, username+"  "+imageprofile, Toast.LENGTH_LONG).show();
+            } catch (Exception e) {
+                // TODO Auto-generated catch block
+                Log.d("AsyncImageProfile", e.getMessage());
+
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void result) {
+
+
+        }
+
+    }
+
+    private class UploadTask extends AsyncTask<Bitmap, Void, Void> {
+
+        protected Void doInBackground(Bitmap... bitmaps) {
+            if (bitmaps[0] == null)
+                return null;
+            setProgress(0);
+
+            Bitmap bitmap = bitmaps[0];
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream); // convert Bitmap to ByteArrayOutputStream
+            InputStream in = new ByteArrayInputStream(stream.toByteArray()); // convert ByteArrayOutputStream to ByteArrayInputStream
+
+            DefaultHttpClient httpclient = new DefaultHttpClient();
+            try {
+                HttpPost httppost = new HttpPost(
+                        "http://anurakam.somee.com/AndroidFileUpload/saveprofile.php"); // server
+
+                MultipartEntity reqEntity = new MultipartEntity();
+                reqEntity.addPart("myFile",
+                        "Profile_"+timeStamp+ ".jpg", in);//System.currentTimeMillis()
+                httppost.setEntity(reqEntity);
+
+                Log.i(TAG, "request " + httppost.getRequestLine());
+                HttpResponse response = null;
+                try {
+                    response = httpclient.execute(httppost);
+                } catch (ClientProtocolException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+                try {
+                    if (response != null)
+                        Log.i(TAG, "response " + response.getStatusLine().toString());
+                } finally {
+
+                }
+            } finally {
+
+            }
+
+            if (in != null) {
+                try {
+                    in.close();
+                } catch (IOException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            }
+
+            if (stream != null) {
+                try {
+                    stream.close();
+                } catch (IOException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onProgressUpdate(Void... values) {
+            // TODO Auto-generated method stub
+            super.onProgressUpdate(values);
+        }
+
+        @Override
+        protected void onPostExecute(Void result) {
+            // TODO Auto-generated method stub
+            super.onPostExecute(result);
+            Toast.makeText(ProfileUser.this, "อัพโหลดรูปโปรไฟล์เสร็จแล้ว"+timeStamp, Toast.LENGTH_LONG).show();
+        }
+    }
 }

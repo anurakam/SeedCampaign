@@ -224,6 +224,21 @@ public class RestAPI {
         return result;
     }
 
+    public JSONObject SaveImageProfile(String userName,String imageProfile) throws Exception {
+        JSONObject result = null;
+        JSONObject o = new JSONObject();
+        JSONObject p = new JSONObject();
+        o.put("interface","RestAPI");
+        o.put("method", "SaveImageProfile");
+        p.put("userName",mapObject(userName));
+        p.put("password",mapObject(imageProfile));
+        o.put("parameters", p);
+        String s = o.toString();
+        String r = load(s);
+        result = new JSONObject(r);
+        return result;
+    }
+
 }
 
 

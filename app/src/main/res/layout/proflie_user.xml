@@ -94,12 +94,22 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_alignTop="@+id/textView3"
             android:layout_alignStart="@+id/tv_firstname" />
-
-        <ImageView
+        <TextView
+            android:id="@+id/alltree"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/imageView"
-            android:src="@drawable/avatar"
+android:text=""
+
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/textView3"
+            android:layout_alignParentEnd="true" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageProfile"
+            android:background="@drawable/avatar"
             android:layout_alignParentTop="true"
             android:layout_alignStart="@+id/lv_dept"
             android:layout_alignBottom="@+id/textView3"

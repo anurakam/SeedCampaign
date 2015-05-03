@@ -11,6 +11,7 @@ public class UserDetailsTable {
 		this.lastName = lastName;
 		this.userName = userName;
 		this.password = password;
+
 	}
 
 	public UserDetailsTable() {
@@ -19,6 +20,7 @@ public class UserDetailsTable {
 		this.lastName = null;
 		this.userName = null;
 		this.password = null;
+
 	
 	}
 
@@ -53,7 +55,6 @@ public class UserDetailsTable {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
-	
+
 
 }

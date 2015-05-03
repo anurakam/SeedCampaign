@@ -38,4 +38,7 @@ public interface ApiService {
     void getSumSouthByMethodWithCallback(Callback<SumSouthModel> callback);
     @GET("/sumalltree.php")
     void getSumAllTreeByMethodWithCallback(Callback<SumAllTreeModel> callback);
+
+    @GET("/alltree_user.php")
+    void getAllTreeUserByUserNameWithCallback(@Query("userName") String user_name,Callback<AllTreeUserModel> callback);
 }
