@@ -69,7 +69,7 @@ public class ProfileUser extends Activity {
     private static final int PICK_IMAGE = 1;
 
     String selectedImagePath;
-    String username,imageprofile;
+
     private static final String TAG = "upload";
 
     String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss",
@@ -437,9 +437,9 @@ public class ProfileUser extends Activity {
     }
     private void sendPhoto(Bitmap bitmap) throws Exception {
 
-
-        username = user_name;
-        imageprofile = "Profile_"+timeStamp+ ".jpg";
+        String username,imageprofile;
+        username = "A" ;//user_name
+        imageprofile = "B" ;//"Profile_"+timeStamp+ ".jpg"
 
         ImageProfileTable imageProfileTable = new ImageProfileTable(username,imageprofile);
         new AsyncImageProfile().execute(imageProfileTable);
@@ -456,9 +456,8 @@ public class ProfileUser extends Activity {
             RestAPI api = new RestAPI();
             try {
 
-                api.SaveImageProfile(params[0].getUserName(),
-                        params[0].getImageProfile());
-                Toast.makeText(ProfileUser.this, username+"  "+imageprofile, Toast.LENGTH_LONG).show();
+                api.SaveImageProfile(params[0].getUserName(),params[0].getImageProfile());
+               // Toast.makeText(ProfileUser.this, username+"  "+imageprofile, Toast.LENGTH_LONG).show();
             } catch (Exception e) {
                 // TODO Auto-generated catch block
                 Log.d("AsyncImageProfile", e.getMessage());

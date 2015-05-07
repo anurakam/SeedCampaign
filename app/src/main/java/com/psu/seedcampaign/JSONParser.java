@@ -111,6 +111,25 @@ public class JSONParser {
         }
         return arrayList;
     }
-	
+	public ImageProfileTable parseImageProfile(JSONObject object)
+	{
+		ImageProfileTable imageProfile=new ImageProfileTable();
+
+		try {
+			JSONObject jsonObj=object.getJSONArray("Value").getJSONObject(0);
+
+			imageProfile.setUserName(jsonObj.getString("userNane"));
+			imageProfile.setImageProfile(jsonObj.getString("imageProfile"));
+
+
+
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			Log.d("JSONParser => parseImageProfile", e.getMessage());
+		}
+
+		return imageProfile;
+
+	}
 	
 }

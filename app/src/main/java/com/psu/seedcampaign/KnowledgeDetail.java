@@ -64,14 +64,14 @@ public class KnowledgeDetail extends Activity {
                         LocalName = Knowledge.getLocalName();
                         CommonName = Knowledge.getCommonName();
                         UsedParts = Knowledge.getUsedParts();
-                        Ultilization = Knowledge.getUltilization();
+                        /*Ultilization = Knowledge.getUltilization();
                         Season = Knowledge.getSeason();
                         Biological = Knowledge.getBiological();
                         Found = Knowledge.getFound();
                         Distribution = Knowledge.getDistribution();
                         Coution = Knowledge.getCoution();
                         Notes = Knowledge.getNotes();
-                        Feferenc = Knowledge.getReference();
+                        Feferenc = Knowledge.getReference();*/
                         Knowledgetitle = Knowledge.getLocalName();
 
 
@@ -79,7 +79,7 @@ public class KnowledgeDetail extends Activity {
                 familyName.setText("ชื่อวงศ์: " + FamilyName);
                 localName.setText("ชื่อพื้นเมือง: " + LocalName);
                 commonName.setText("ชื่อสามัญ: " + CommonName);
-                usedParts.setText("ส่วนที่นำมาใช้: " + UsedParts);
+                /*usedParts.setText("ส่วนที่นำมาใช้: " + UsedParts);
                 ultilization.setText("การใช้ประโยชน์: " + Ultilization);
                 season.setText("ฤดูติดดอก/ออกผล: " + Season);
                 biological.setText("ลักษณะ: " + Biological);
@@ -87,8 +87,10 @@ public class KnowledgeDetail extends Activity {
                 distribution.setText("การกระจายพันธุ์: " + Distribution);
                 coution.setText("คำเตือน: " + Coution);
                 notes.setText("หมายเหตุ: " + Notes);
-                reference.setText("เอกสารอ้างอิง: " + Feferenc);
+                reference.setText("เอกสารอ้างอิง: " + Feferenc);*/
                 knowledgetitle.setText("" + Knowledgetitle);
+                usedParts.setText("ลักษณะ: " + UsedParts);
+
             }
 
             @Override

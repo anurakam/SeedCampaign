@@ -11,34 +11,34 @@ import retrofit.http.Query;
  */
 public interface ApiService {
 
-    @GET("/Noname1.php")
+    @GET("/service/Noname1.php")
     void getNoname1ByMethodWithCallback(Callback<List<PlantModel>> callback);
 
-    @GET("/knowledge.php")
+    @GET("/service/knowledge.php")
     void getKnowledgeByMethodWithCallback(Callback<List<KnowledgeModel>> callback);
 
-    @GET("/knowledge_detail.php")
+    @GET("/service/knowledge_detail.php")
     void getKnowledgeDetailByNameWithCallback(@Query("localName") String local_name,Callback<KnowledgeDetailModel> callback);
 
-    @GET("/countpeople.php")
+    @GET("/service/countpeople.php")
     void getCountPeopleByMethodWithCallback(Callback<CountPeopleModel> callback);
 
-    @GET("/histoty_user.php")
+    @GET("/service/histoty_user.php")
     void getHistoryByUserNameWithCallback(@Query("userName") String user_name,Callback<List<HistoryModel>> callback);
 
-    @GET("/sumnorth.php")
+    @GET("/service/sumnorth.php")
     void getSumNorthByMethodWithCallback(Callback<SumNorthModel> callback);
-    @GET("/sumnortheast.php")
+    @GET("/service/sumnortheast.php")
     void getSumNorthEastByMethodWithCallback(Callback<SumNorthEastModel> callback);
-    @GET("/sumeast.php")
+    @GET("/service/sumeast.php")
     void getSumEastByMethodWithCallback(Callback<SumEastModel> callback);
-    @GET("/sumcenter.php")
+    @GET("/service/sumcenter.php")
     void getSumCentralByMethodWithCallback(Callback<SumCentralModel> callback);
-    @GET("/sumsouth.php")
+    @GET("/service/sumsouth.php")
     void getSumSouthByMethodWithCallback(Callback<SumSouthModel> callback);
-    @GET("/sumalltree.php")
+    @GET("/service/sumalltree.php")
     void getSumAllTreeByMethodWithCallback(Callback<SumAllTreeModel> callback);
 
-    @GET("/alltree_user.php")
+    @GET("/service/alltree_user.php")
     void getAllTreeUserByUserNameWithCallback(@Query("userName") String user_name,Callback<AllTreeUserModel> callback);
 }

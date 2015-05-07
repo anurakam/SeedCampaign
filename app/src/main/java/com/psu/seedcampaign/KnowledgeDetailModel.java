@@ -4,14 +4,15 @@ package com.psu.seedcampaign;
  * Created by อนุรักษ์ on 19/3/2558.
  */
 public class KnowledgeDetailModel {
-    String scientificName,familyName,localName,commonName,usedParts,ultilization,season,biological,found,distribution,coution,notes,reference;
+    //String scientificName,familyName,localName,commonName,usedParts,ultilization,season,biological,found,distribution,coution,notes,reference;
+    String scientific,family,treename,common,treedetail;
     // int id_User;
 
 
+    //String scientificName,String familyName,String localName,String commonName,String usedParts,String ultilization,String season,String biological,String found,String distribution,String coution,String notes,String reference
+    public KnowledgeDetailModel(String scientific,String family,String treename,String common,String treedetail) {
 
-    public KnowledgeDetailModel(String scientificName,String familyName,String localName,String commonName,String usedParts,String ultilization,String season,String biological,String found,String distribution,String coution,String notes,String reference) {
-
-        this.scientificName = scientificName;
+      /*  this.scientificName = scientificName;
         this.familyName = familyName;
         this.localName = localName;
         this.commonName = commonName;
@@ -23,52 +24,57 @@ public class KnowledgeDetailModel {
         this.distribution = distribution;
         this.coution = coution;
         this.notes = notes;
-        this.reference = reference;
+        this.reference = reference;*/
+        this.scientific = scientific;
+        this.family = family;
+        this.treename = treename;
+        this.common = common;
+        this.treedetail = treedetail;
 
     }
 
 
     public String getScientificName() {
-        return scientificName;
+        return scientific;
     }
 
-    public void setScientificName(String scientificName) {
-        this.scientificName = scientificName;
+    public void setScientificName(String scientific) {
+        this.scientific = scientific;
     }
 
     public String getFamilyName() {
-        return familyName;
+        return family;
     }
 
-    public void setFamilyName(String familyName) {
-        this.familyName = familyName;
+    public void setFamilyName(String family) {
+        this.family = family;
     }
 
     public String getLocalName() {
-        return localName;
+        return treename;
     }
 
-    public void setLocalName(String localName) {
-        this.localName = localName;
+    public void setLocalName(String treename) {
+        this.treename = treename;
     }
 
     public String getCommonName() {
-        return commonName;
+        return common;
     }
 
-    public void setCommonName(String commonName) {
-        this.commonName = commonName;
+    public void setCommonName(String v) {
+        this.common = common;
     }
 
     public String getUsedParts() {
-        return usedParts;
+        return treedetail;
     }
 
-    public void setUsedParts(String usedParts) {
-        this.usedParts = usedParts;
+    public void setUsedParts(String treedetail) {
+        this.treedetail = treedetail;
     }
 
-    public String getUltilization() {
+    /*public String getUltilization() {
         return ultilization;
     }
 
@@ -131,5 +137,5 @@ public class KnowledgeDetailModel {
     public void setReference(String reference) {
         this.reference = reference;
     }
-
+*/
 }

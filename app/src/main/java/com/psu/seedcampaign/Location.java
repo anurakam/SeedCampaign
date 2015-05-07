@@ -27,10 +27,10 @@ import app.akexorcist.gdaplibrary.PlaceType;
 
 public class Location extends Activity {
 
-    final String ApiKey = "AIzaSyDQ6mA6vUHD3cMNqDoblES6q3dFHzNLqs4";
+    final String ApiKey = "AIzaSyCDengTMy7_x2AY_eTG3Rsz2PefAK3YXWg"; //"AIzaSyDQ6mA6vUHD3cMNqDoblES6q3dFHzNLqs4";
 
-    double latitude; //=  7.89539;
-    double longitude; //= 98.3535;
+    double latitude ;//=  7.89539;
+    double longitude ;//= 98.3535;
     int radius = 1000;
     String type = PlaceType.FOOD;
     String language = "en";
