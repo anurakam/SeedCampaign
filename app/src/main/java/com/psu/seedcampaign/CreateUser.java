@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 /**
  * Created by อนุรักษ์ on 8/3/2558.
@@ -45,7 +46,7 @@ public class CreateUser extends Activity {
                 // TODO Auto-generated method stub
 
                 String firstname, lastname, username, password;
-
+                //String name, surname, username, password;
                 firstname = FirstName.getText().toString();
                 lastname = LastName.getText().toString();
                 username = Username.getText().toString();

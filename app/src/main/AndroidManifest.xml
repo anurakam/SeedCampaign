@@ -28,11 +28,11 @@
         </activity>
         <activity
             android:name="com.psu.seedcampaign.Land"
-            android:label="@string/app_name" >
+            android:label="ข้อมูลการปลูก" >
         </activity>
         <activity
             android:name="com.psu.seedcampaign.Plant"
-            android:label="@string/app_name" >
+            android:label="ปลูกต้นไม้" >
         </activity>
         <activity
             android:name="com.psu.seedcampaign.Feed"
@@ -68,11 +68,11 @@
         </activity>
         <activity
             android:name="com.psu.seedcampaign.CreateUser"
-            android:label="@string/app_name" >
+            android:label="สมัครสมาชิก" >
         </activity>
         <activity
             android:name="com.psu.seedcampaign.ProfileUser"
-            android:label="@string/app_name" >
+            android:label="ข้อมูลส่วนตัว" >
         </activity>
         <activity
             android:name="com.psu.seedcampaign.PreviewImage"
@@ -84,7 +84,7 @@
         </activity>
         <activity
             android:name="com.psu.seedcampaign.Knowledge"
-            android:label="@string/app_name" >
+            android:label="ข้อมูลต้นไม้" >
         </activity>
         <activity
             android:name="com.psu.seedcampaign.KnowledgeDetail"

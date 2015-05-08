@@ -3,7 +3,7 @@ package com.psu.seedcampaign;
 public class UserDetailsTable {
 
 	String firstName,lastName,userName,password;
-
+	//String name,surname,username,password;
 	public UserDetailsTable(String firstName, String lastName, String userName,
                             String password) {
 		super();

@@ -41,4 +41,7 @@ public interface ApiService {
 
     @GET("/service/alltree_user.php")
     void getAllTreeUserByUserNameWithCallback(@Query("userName") String user_name,Callback<AllTreeUserModel> callback);
+
+    @GET("/service/countNo.php")
+    void getCountNoByUserNameWithCallback(@Query("userName") String Username,Callback<CountNoModel> callback);
 }

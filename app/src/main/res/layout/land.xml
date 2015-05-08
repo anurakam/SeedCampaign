@@ -108,7 +108,8 @@ tools:context="com.psu.seedcampaign.Land" >
             android:src="@drawable/total"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_marginBottom="20dp" />
+            android:layout_marginBottom="20dp"
+        />
 
         <TextView
             android:layout_width="wrap_content"

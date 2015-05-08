@@ -44,4 +44,5 @@ dependencies {
     compile 'com.google.code.gson:gson:2.2.4'
     compile 'com.squareup.retrofit:retrofit:1.9.0'
     compile files('libs/googledirectionandplacelibrary.jar')
+    compile 'com.google.android.gms:play-services:6.5.87'
 }

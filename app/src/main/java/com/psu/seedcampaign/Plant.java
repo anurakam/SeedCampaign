@@ -25,6 +25,8 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 //import android.util.Log;
 
+import com.google.gson.GsonBuilder;
+
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
@@ -43,6 +45,12 @@ import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+
+import retrofit.Callback;
+import retrofit.RestAdapter;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
+import retrofit.converter.GsonConverter;
 
 /**
  * Created by อนุรักษ์ on 2/2/2558.
@@ -68,7 +76,9 @@ public class Plant extends Activity {
 
     EditText NameTree,CommonName,Amount,LocationName,Region;
     Context context;
-    String U;
+    String id_user;
+
+    String id;
 
 
     @Override
@@ -139,7 +149,7 @@ public class Plant extends Activity {
 
 
                 int id_User;
-                String username,picName,nickName,flowerName,amount,locationName,region;
+                String username, picName, nickName, flowerName, amount, locationName, region;
                 username = Username;
                 picName = separated[6];
                 nickName = NameTree.getText().toString();
@@ -148,12 +158,14 @@ public class Plant extends Activity {
                 locationName = LocationName.getText().toString();
                 region = Region.getText().toString();
 
-                PlantingTable plantingTable = new PlantingTable(username,picName,nickName,flowerName,amount,locationName,region);
+                PlantingTable plantingTable = new PlantingTable(username, picName, nickName, flowerName, amount, locationName, region);
                 new AsyncPlanting().execute(plantingTable);
                 new UploadFileToServer().execute();
-               // finish();
+
+                // finish();
             }
         });
+
 
 
 
@@ -431,24 +443,49 @@ public class Plant extends Activity {
     }
 
     private void showAlert() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("คุณปลูกไปแล้ว"+"  "+"ต้น"+"\n"+"รวมทั้งโครงการ"+"  "+"ต้น").setTitle("เสร็จสิ้น")
-                .setCancelable(false)
-                .setPositiveButton("ตกลง", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        // do nothing
-                        b.setImageDrawable(getResources().getDrawable(R.drawable.takephoto));
-                        progressBar.setVisibility(View.GONE);
-                        NameTree.setText("");
-                        CommonName.setText("");
-                        Amount.setText("");
-                        LocationName.setText("");
-                        Region.setText("");
-                        finish();
-                    }
-                });
-        AlertDialog alert = builder.create();
-        alert.show();
+        GsonBuilder builder = new GsonBuilder();
+        RestAdapter restAdapter = new RestAdapter.Builder()
+                .setLogLevel(RestAdapter.LogLevel.FULL)
+                .setEndpoint("http://anurakam.somee.com/")
+                .setConverter(new GsonConverter(builder.create()))
+                .build();
+        ApiService retrofit = restAdapter.create(ApiService.class);
+        retrofit.getCountNoByUserNameWithCallback(Username, new Callback<CountNoModel>() {
+            @Override
+            public void success(CountNoModel countNoModel, Response response) {
+                CountNoModel countNo = countNoModel;
+               String UserDetailsID = countNo.getCountNo();
+               // Toast.makeText(Plant.this, String.valueOf(id), Toast.LENGTH_LONG).show();
+                //id_user = String.valueOf(id);
+                AlertDialog.Builder builder2 = new AlertDialog.Builder(Plant.this);
+                builder2.setMessage("คุณปลูกต้นไม้เรียบร้อยแล้ว").setTitle("เสร็จสิ้น")//"คุณปลูกไปแล้ว"+"  "+"ต้น"+"\n"+"รวมทั้งโครงการ"+"  "+"ต้น"
+                        .setCancelable(false)
+                        .setPositiveButton("ตกลง", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                // do nothing
+                                b.setImageDrawable(getResources().getDrawable(R.drawable.takephoto));
+                                progressBar.setVisibility(View.GONE);
+                                NameTree.setText("");
+                                CommonName.setText("");
+                                Amount.setText("");
+                                LocationName.setText("");
+                                Region.setText("");
+                                finish();
+                            }
+                        });
+                AlertDialog alert = builder2.create();
+                alert.show();
+
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+
+            }
+        });
+
+
+
     }
 
     protected class AsyncPlanting extends
